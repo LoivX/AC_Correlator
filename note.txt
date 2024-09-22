@@ -1,0 +1,134 @@
+11/09
+implemntazione metodo
+obiettivo: prendere il modello, moltiplocarlo per il redshift per renderlo compatibile con una prima porzione di dati e calcolare la correlaizone, poi itero il processo
+1) calcolo redshift: individuo il redshift che un sistema dovrebbe avere per essere individuato alle lunghezze d'onda iniziale e finale dei dati
+                     per evitare che il modello sbordi il redshift finale si calcola con la lunghezza d'onda finale del doppietto
+                     il redshift consente di individuare ogni porzione dello spettro (funge da indice con densita' arbitraria)
+2) calcolo correlazione: il modello viene moltiplicato per il redshift i-esimo, si isola il frammento di flusso dello spettro che coincide spazialmente con la dimensione del modello, si calcola la correlazione
+
+PROBLEMI: forma della correlazione non attesa (vedi grafici)
+          
+
+12/09
+individuato problema nel calcolodella correlaizone
+facendo il calcolo della correlazione con il modello fisso (calcolato a un redshift medio) la correlazione è dominata dai pixel nulli che danno correlaizone molto alta
+in questo modo il grafico risulta sempre a correlazione alta indipendentemente dall'individuazione di un sistema (che risulta dunque ininfluente)
+
+risoluzione: eliminare la parte del modello nulla e calcolare solo la correlaizone tra picchi e modello
+per farlo metto punti nulli a nan e poi seleziono tutti gli indici dei punti non nan del modello e dello spettro e li correlo
+
+forma reverse è corretta perché la formula prevede prodotti tra punti minori di 1 se si ha una riga e 1 altrimenti
+
+14/09
+correlator_v1.0
+aggiunto find_peaks
+aggiunta barra di cariacamento
+rimosse importazioni superflue
+
+correlator_v1.1
+aggiunto normalizzazione e "capovolgimento" correlazione
+aggiunta funzione per il calcolo della differenza tra i picchi e per il confronto con la differenza teorica
+aggiunto ciclo per controllo picchi
+
+correlator_v1.2
+aggiunto sistema discriminazione picchi centrali con tolleranza fissa
+PROBLEMA: tolleranza cost fornisce un vincolo più stretto per i sistemi a basso z e meno per quelli ad alto z
+--> soluzione: tolleranza variabile con z
+
+per risolvere: plottare andamento numero picchi individuati su tolleranza e dedurre un andamento generico per la tolleranza
+
+
+15/09
+analisi numero picchi in funzione della tolleranza
+tolleranza deve essere variabile ma come? (vedi note)
+find peaks scelta prominence determina numero sistemi più che height o width
+
+aggiunta tabella picchi
+
+ATTENZIONE: tutto sbagliato: controllo sui picchi successivi non va bene
+--> altro metodo: scelgo picco i e verifico se ci sono picchi a distanza +- deltaz
+funziona!
+
+
+
+correlator_v1.3
+introdotto metodo di identifcazione picchi tramite deltaz
+
+16/09
+correlator_v1.4
+introdotto metodo di identifcazione picchi tramite altezza
+
+PROBLEMA: con i parametri definiti funziona solo ad alte densita di colonna
+sembra che altezza relativa e distanza varino con densità di colonna
+
+
+17/09
+correlator_v1.5
+improved correlation method: aggiunto calcolo correlazione per modello completo e modelli parziali (singoli picchi) contemporaneamente per poi ottenere il rapporto
+
+18/09
+parametro height ritarato attorno a 1 in quanto lo spettro di orrelazione non è più normalizzato a uno
+prominence molto rilevante nella selezione dei picchi
+
+ATTENZIONE: deltaz calcolato con le lunghezze d'onda è impreciso per i sistemi a basso logN
+
+19/09
+ELIMINATA SELEZIONE TRAMITE ALTEZZA
+
+correlator_v1.6
+applicate modifiche correlazione
+niente normalizzazione
+vincolo in altezza determinato in funzione di dev std dati
+selezione picchi anche
+
+sistemate maschere filtering
+
+correlator_v1.7
+sistemato problema delta lambda utilizzando importazione lambda da file atom_par
+aggiunto threshold arbitriario in find_systems
+
+20/09
+al posto di 1-cor metto percentile - cor per eliminare meglio i picchi secondari
+(ATTENZIONE: meno perc --> migliore selezione!? dovebbe essere il contrario)
+
+selezionati tutti i picchi fuori 3 sig con find peaks
+
+
+
+correggere sistemi multipli
+aggiornare con selettore height 
+
+interfaccia(?) (parametri: tolleranza, height_thr, ion)
+
+
+test civ 7 systems
+[2.57352431 2.66422603 2.51803598 2.22357274 2.58163493 2.21013991
+ 2.30970016 2.82904971 2.60683895 2.95009428 2.88590944 2.27320993
+ 2.20884315 3.08239514 2.73699688 2.30842111 2.22430456 2.68757115
+ 2.71786475 2.98868828]
+
+
+stimare meglio livello di massimo                                       ---OK
+aumentare a 3 sig e distance per eliminare i picchi multipli            ---OK
+calcolare completezza  e falsi positivi
+eliminare picchi secondari con find system e completezza
+
+
+
+
+
+
+NEXT STEP
+file json: definisce nuovo spettro con sistemi simulati sintetici                                                   ---OK
+modifica valori sistemi simulati per generare spettri diversi                                                       ---OK
+trova un modo per discriminare le righe di correlazione corrette (quelle centrali quindi con compagno a dx e sx)    ---OK
+formula pre distanza dz = dlambda * (1+z) --> dipende da z!!!                                                       ---OK
+aumenta la difficoltà e verifica percentuale rilevamento
+
+prima: trova risoluzione e snr in file allegato nella mail in cui ti ha mandato lo spettro
+
+aggiungi sistemi diversi e ripeti stessi passaggi
+
+ac_gui £file json    per avviare lo spettro sintetico
+
+
