@@ -101,6 +101,19 @@ aggiornare con selettore height
 interfaccia(?) (parametri: tolleranza, height_thr, ion)
 
 
+02/10
+correlator_v1.9 
+aggiunta gui per i parametri
+
+da fare:    creare programma per iterare tutto  
+            completezza con formule corrette
+            testing
+
+03/10
+testing modfs e nofs
+correlator_v2
+
+
 test civ 7 systems
 [2.57352431 2.66422603 2.51803598 2.22357274 2.58163493 2.21013991
  2.30970016 2.82904971 2.60683895 2.95009428 2.88590944 2.27320993
@@ -110,8 +123,8 @@ test civ 7 systems
 
 stimare meglio livello di massimo                                       ---OK
 aumentare a 3 sig e distance per eliminare i picchi multipli            ---OK
-calcolare completezza  e falsi positivi
-eliminare picchi secondari con find system e completezza
+calcolare completezza  e falsi positivi                                 ---OK
+eliminare picchi secondari con find system e completezza                ---OK 
 
 
 

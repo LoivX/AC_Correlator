@@ -23,8 +23,6 @@ def bin_to_z(bin):
     return z_start + bin*dz
 
 
-
-
 ##MAIN##
 
 spectrum = Table.read('testCIV_7_spec.dat', format='ascii')

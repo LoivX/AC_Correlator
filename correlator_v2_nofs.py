@@ -1,4 +1,5 @@
 import sys
+sys.path.append(r"d:\Università\terzo anno\Tesi\astrocook")
 from astrocook.functions import lines_voigt
 from astrocook import vars
 from astropy.table import Table
@@ -19,25 +20,17 @@ def get_indicies(flux, threshold):
 def bin_to_z(bin, z_start, dz):
     return z_start + bin * dz
 
-def correlator(spectrum_file='testCIV_7_spec.dat', threshold=0.999, dz=1e-5, perc=75):
+
+def correlator(spectrum_file, wav_start, wav_end, logN, b, btur, ion, threshold, dz, perc):
     # Load spectrum
     spectrum = Table.read(spectrum_file, format='ascii')
     spectrum = Table([spectrum['x'], spectrum['y']], names=['wavelength', 'flux'])
-
-    # Model parameters
-    wav_start = [154.8, 154.8, 155.06]
-    wav_end = [155.1, 154.85, 155.1]
-    z = 0
-    logN = 12
-    b = 5
-    btur = 0
-    ion = 'CIV'
 
     # Define models
     models = [Table(), Table(), Table()]
     for i in range(len(wav_start)):
         x = np.linspace(wav_start[i], wav_end[i], 1000)
-        y = lines_voigt(x, z, logN, b, btur, ion)
+        y = lines_voigt(x, 0, logN, b, btur, ion)
         models[i] = Table([x, y], names=['wavelength', 'flux'])
 
     # Other parameters
@@ -78,21 +71,4 @@ def correlator(spectrum_file='testCIV_7_spec.dat', threshold=0.999, dz=1e-5, per
     peaks_table = Table([bin_to_z(peaks, z_start, dz), properties['peak_heights'], properties['widths'], bin_to_z(properties['left_ips'], z_start, dz), bin_to_z(properties['right_ips'], z_start, dz), properties['width_heights'], properties['prominences']],
                         names=['z', 'height', 'fwhm', 'left_z', 'right_z', 'half_max', 'prominence'])
 
-    possible_systems = bin_to_z(peaks, z_start, dz)
-    
-    # Comparison with synthetic systems
-    synthetic_systems = [2.57352431, 2.66422603, 2.51803598, 2.22357274, 2.58163493, 2.21013991, 2.30970016, 2.82904971, 2.60683895, 2.95009428, 2.88590944, 2.27320993, 2.20884315, 3.08239514, 2.73699688, 2.30842111, 2.22430456, 2.68757115, 2.71786475, 2.98868828]
-    synthetic_systems = [round(p, 4) for p in synthetic_systems]
-
-    n = 0
-    false_positive = []
-    for system in possible_systems:
-        system = round(system, 4)
-        if system in synthetic_systems:
-            n += 1
-        else:
-            false_positive.append(system)
-
-    completeness = n / len(synthetic_systems) * 100
-
-    return completeness, false_positive, peaks_table
+    return cor_final, z_interval, peaks_table
