@@ -31,7 +31,7 @@ def get_dlambda(ion):
     return dlambda
 
 # Function to find the peaks studying the delta_z between the peaks
-def find_systems(peaks_table, ion = 'CIV', z_tolerance = 0.1e-3, height_threshold = 3, cor_final = []):
+def find_secondary(peaks_table, ion = 'CIV', z_tolerance = 0.1e-3, height_threshold = 2.5, cor_final = []):
     
     for peak in peaks_table[peaks_table['height'] > np.mean(cor_final) + np.std(cor_final)*height_threshold]:
         # Defining the theoretical redshifts of the sx and dx peaks
@@ -111,6 +111,6 @@ def correlator(spectrum_file, wav_start, wav_end, logN, b, btur, ion, threshold,
     peaks_table = Table([bin_to_z(peaks, z_start, dz), properties['peak_heights'], properties['widths'], bin_to_z(properties['left_ips'], z_start, dz), bin_to_z(properties['right_ips'], z_start, dz), properties['width_heights'], properties['prominences']], names=['z', 'height', 'fwhm', 'left_z', 'right_z', 'half_max', 'prominence'])
 
 
-    peaks_table = find_systems(peaks_table, ion, z_tolerance , height_threshold, cor_final)
+    peaks_table = find_secondary(peaks_table, ion, z_tolerance , height_threshold, cor_final)
 
     return cor_final, z_interval, peaks_table

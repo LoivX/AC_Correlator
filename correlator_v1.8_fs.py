@@ -145,25 +145,18 @@ print(possible_systems, len(possible_systems))
 synthetic_systems = [2.57352431, 2.66422603, 2.51803598, 2.22357274, 2.58163493, 2.21013991, 2.30970016, 2.82904971, 2.60683895, 2.95009428, 2.88590944, 2.27320993, 2.20884315, 3.08239514, 2.73699688, 2.30842111, 2.22430456, 2.68757115, 2.71786475, 2.98868828]
 
 
-for i, p in enumerate(synthetic_systems):
-    synthetic_systems[i] = round(p, 4)
+tp = sum(1 for system in possible_systems if any(abs(system - syn) < 1.665*b/3e5 for syn in synthetic_systems))
 
-n=0
+fp = len(possible_systems) - tp
+p = len(synthetic_systems)
 
-false_positive = []
-for system in possible_systems:
-    system = round(system, 4)
-    if(system in synthetic_systems):
-        n+=1
-        print(system, 'found')
-    else:
-        false_positive.append(system)
+recall = tp / p * 100
+precision = tp / (tp+fp) * 100
+f1 = 2 * tp / (tp + fp + p) * 100
 
-completness = n/len(synthetic_systems) * 100
-
-print(completness, r'% of the synthetic systems have been found')
-print(100 - completness, r'% of the synthetic systems have not been found')
-print(len(false_positive)/len(possible_systems)*100, r'% of the found systems are false positives')
+print('Recall:', recall, '%')
+print('Precision:', precision, '%')
+print('F1 score:', f1, '%')
 
 
 #PLOTS
