@@ -1,6 +1,6 @@
 import sys
 sys.path.append(r"d:\Università\terzo anno\Tesi\astrocook")
-from astrocook.functions import lines_voigt
+from astrocook.functions import lines_voigt, convolve_simple
 from astrocook import vars
 from astropy.table import Table
 import numpy as np
@@ -20,7 +20,17 @@ def get_indicies(flux, threshold):
 def bin_to_z(bin, z_start, dz):
     return z_start + bin * dz
 
-def correlator(spectrum_file, wav_start, wav_end, logN, b, btur, ion, threshold, dz, perc):
+def psf_gauss(x, resol):
+        if len(x)==0:
+            return []
+        c = x[len(x)//2]
+        sigma = c / resol * 4.246609001e-1
+
+        psf = np.exp(-0.5*((x-c) / sigma)**2)
+        psf = psf[np.where(psf > 1e-6)]
+        return psf
+
+def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, threshold, dz, perc):
     # Load spectrum
     spectrum = Table.read(spectrum_file, format='ascii')
     spectrum = Table([spectrum['x'], spectrum['y']], names=['wavelength', 'flux'])
@@ -29,7 +39,7 @@ def correlator(spectrum_file, wav_start, wav_end, logN, b, btur, ion, threshold,
     models = [Table(), Table(), Table()]
     for i in range(len(wav_start)):
         x = np.linspace(wav_start[i], wav_end[i], 1000)
-        y = lines_voigt(x, 0, logN, b, btur, ion)
+        y = convolve_simple(lines_voigt(x, 0, logN, b, btur, ion), psf_gauss(x, resol))
         models[i] = Table([x, y], names=['wavelength', 'flux'])
 
     # Other parameters
@@ -39,16 +49,16 @@ def correlator(spectrum_file, wav_start, wav_end, logN, b, btur, ion, threshold,
     cor_all = [np.array([]), np.array([]), np.array([])]
 
     for i, model in enumerate(models):
-        for z in tqdm(np.arange(z_start, z_end, dz), f"Calculating Correlation with model {i}"):
-            new_model = Table([model['wavelength'] * (1 + z), model['flux']], names=['wavelength', 'flux'])
-
-            mask = (spectrum['wavelength'] > new_model['wavelength'].min()) & (spectrum['wavelength'] < new_model['wavelength'].max())
+        for z in tqdm(np.arange(z_start, z_end, dz), f"Calculating Correlation with model {i}"): 
+            # Defining the interval in which the model is present
+            interval = [(model['wavelength'].min())*(1+z), (model['wavelength'].max())*(1+z)]    
+            mask = (spectrum['wavelength'] > interval[0]) & (spectrum['wavelength'] < interval[1])
 
             # Selecting the data interval covered by the model
-            spec_chunk = Table([spectrum['wavelength'][mask], spectrum['flux'][mask]], names=['wavelength', 'flux'])
+            spec_chunk = spectrum[mask]
 
             # Interpolating the model to the data wavelength
-            interpolate = interp1d(new_model['wavelength'], new_model['flux'], kind='linear')
+            interpolate = interp1d(model['wavelength']*(1 + z), model['flux'], kind='linear')
             interpolated_flux = interpolate(spec_chunk['wavelength'])
 
             # Identifying the indices of the model that are below the threshold

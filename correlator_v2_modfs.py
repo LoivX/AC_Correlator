@@ -31,7 +31,7 @@ def get_dlambda(ion):
     return dlambda
 
 # Function to find the peaks studying the delta_z between the peaks
-def find_secondary(peaks_table, ion = 'CIV', z_tolerance = 0.1e-3, height_threshold = 2.5, cor_final = []):
+def find_secondary(peaks_table, ion, z_tolerance, height_threshold, cor_final = []):
     
     for peak in peaks_table[peaks_table['height'] > np.mean(cor_final) + np.std(cor_final)*height_threshold]:
         # Defining the theoretical redshifts of the sx and dx peaks

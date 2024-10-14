@@ -41,7 +41,7 @@ if __name__ == '__main__':
     wav_start = [154.8, 154.8, 155.06]
     wav_end = [155.1, 154.85, 155.1]
     z = 0
-    logN = 12
+    logN = 11.5
     b = 5
     btur = 0
     ion = 'CIV'
@@ -56,11 +56,11 @@ if __name__ == '__main__':
     z_tolerance = 0.2e-3
 
     cor_final, z_interval, peaks_table = correlator(spectrum_file, wav_start, wav_end, logN, b, btur, ion, threshold, dz, perc, height_threshold, z_tolerance)
-
+    print(peaks_table)
 
 
     # Completness calculation
-    synthetic_systems = [2.57352431, 2.66422603, 2.51803598, 2.22357274, 2.58163493, 2.21013991, 2.30970016, 2.82904971, 2.60683895, 2.95009428, 2.88590944, 2.27320993, 2.20884315, 3.08239514, 2.73699688, 2.30842111, 2.22430456, 2.68757115, 2.71786475, 2.98868828]
+    synthetic_systems = [2.56835944, 2.46606907, 2.63170324, 2.23751349, 2.18689804, 2.86495142, 2.44759083, 2.47467768, 2.83605921, 2.24308258, 2.33421258, 2.9663927, 2.32172368, 2.21297566, 2.31987066, 2.70090404, 2.371381, 2.22990712, 2.69746521, 2.12421353]
     RPF1(peaks_table, synthetic_systems, b)
 
     plot_correlation(cor_final, z_interval, peaks_table['z'])

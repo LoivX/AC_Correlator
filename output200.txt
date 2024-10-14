@@ -1,0 +1,65 @@
+
+ Processing file: test_00_200_spec.dat
+Recall: 20.0 %
+Precision: 1.7167381974248928 %
+F1 score: 3.1620553359683794 %
+
+ Processing file: test_02_200_spec.dat
+Recall: 10.0 %
+Precision: 0.9433962264150944 %
+F1 score: 1.7241379310344827 %
+
+ Processing file: test_04_200_spec.dat
+Recall: 10.0 %
+Precision: 1.0256410256410255 %
+F1 score: 1.8604651162790697 %
+
+ Processing file: test_06_200_spec.dat
+Recall: 25.0 %
+Precision: 2.5380710659898478 %
+F1 score: 4.6082949308755765 %
+
+ Processing file: test_08_200_spec.dat
+Recall: 55.00000000000001 %
+Precision: 6.875000000000001 %
+F1 score: 12.222222222222221 %
+
+ Processing file: test_10_200_spec.dat
+Recall: 65.0 %
+Precision: 12.62135922330097 %
+F1 score: 21.138211382113823 %
+
+ Processing file: test_12_200_spec.dat
+Recall: 80.0 %
+Precision: 33.33333333333333 %
+F1 score: 47.05882352941176 %
+
+ Processing file: test_14_200_spec.dat
+Recall: 90.0 %
+Precision: 66.66666666666666 %
+F1 score: 76.59574468085107 %
+
+ Processing file: test_16_200_spec.dat
+Recall: 95.0 %
+Precision: 76.0 %
+F1 score: 84.44444444444444 %
+
+ Processing file: test_18_200_spec.dat
+Recall: 95.0 %
+Precision: 82.6086956521739 %
+F1 score: 88.37209302325581 %
+
+ Processing file: test_20_200_spec.dat
+Recall: 100.0 %
+Precision: 86.95652173913044 %
+F1 score: 93.02325581395348 %
+
+ Processing file: test_22_200_spec.dat
+Recall: 85.0 %
+Precision: 73.91304347826086 %
+F1 score: 79.06976744186046 %
+
+ Processing file: test_24_200_spec.dat
+Recall: 70.0 %
+Precision: 60.86956521739131 %
+F1 score: 65.11627906976744 %

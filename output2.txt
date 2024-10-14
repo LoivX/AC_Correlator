@@ -1,0 +1,91 @@
+
+ Processing file: test_00_200_spec.dat
+
+ nofs
+Recall: 5.0 %
+Precision: 1.4492753623188406 %
+F1 score: 2.247191011235955 %
+
+ Processing file: test_02_200_spec.dat
+
+ nofs
+Recall: 5.0 %
+Precision: 1.2987012987012987 %
+F1 score: 2.0618556701030926 %
+
+ Processing file: test_04_200_spec.dat
+
+ nofs
+Recall: 5.0 %
+Precision: 1.6666666666666667 %
+F1 score: 2.5 %
+
+ Processing file: test_06_200_spec.dat
+
+ nofs
+Recall: 5.0 %
+Precision: 1.639344262295082 %
+F1 score: 2.4691358024691357 %
+
+ Processing file: test_08_200_spec.dat
+
+ nofs
+Recall: 0.0 %
+Precision: 0.0 %
+F1 score: 0.0 %
+
+ Processing file: test_10_200_spec.dat
+
+ nofs
+Recall: 10.0 %
+Precision: 2.898550724637681 %
+F1 score: 4.49438202247191 %
+
+ Processing file: test_12_200_spec.dat
+
+ nofs
+Recall: 15.0 %
+Precision: 5.263157894736842 %
+F1 score: 7.792207792207792 %
+
+ Processing file: test_14_200_spec.dat
+
+ nofs
+Recall: 20.0 %
+Precision: 19.047619047619047 %
+F1 score: 19.51219512195122 %
+
+ Processing file: test_16_200_spec.dat
+
+ nofs
+Recall: 10.0 %
+Precision: 7.6923076923076925 %
+F1 score: 8.695652173913043 %
+
+ Processing file: test_18_200_spec.dat
+
+ nofs
+Recall: 15.0 %
+Precision: 17.647058823529413 %
+F1 score: 16.216216216216218 %
+
+ Processing file: test_20_200_spec.dat
+
+ nofs
+Recall: 10.0 %
+Precision: 14.285714285714285 %
+F1 score: 11.76470588235294 %
+
+ Processing file: test_22_200_spec.dat
+
+ nofs
+Recall: 5.0 %
+Precision: 5.555555555555555 %
+F1 score: 5.263157894736842 %
+
+ Processing file: test_24_200_spec.dat
+
+ nofs
+Recall: 5.0 %
+Precision: 7.142857142857142 %
+F1 score: 5.88235294117647 %

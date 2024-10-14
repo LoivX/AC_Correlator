@@ -113,6 +113,10 @@ da fare:    creare programma per iterare tutto
 testing modfs e nofs
 correlator_v2
 
+09/10
+problematica parametri: fatto programma per identificazione parametri migliori per modfs ma cmq f1 minore di nofs quindi scartato
+estensione del testing a logN10 fino a logN12.4 
+
 
 test civ 7 systems
 [2.57352431 2.66422603 2.51803598 2.22357274 2.58163493 2.21013991
