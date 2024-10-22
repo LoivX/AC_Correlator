@@ -1,65 +1,52 @@
 
  Processing file: test_00_100_spec.dat
-Recall: 5.0 %
-Precision: 0.43668122270742354 %
-F1 score: 0.8032128514056224 %
+Recall: 0.0 %
+Precision: 0.0 %
+F1 score: 0.0 %
 
  Processing file: test_02_100_spec.dat
-Recall: 10.0 %
-Precision: 0.9009009009009009 %
-F1 score: 1.6528925619834711 %
+Recall: 20.0 %
+Precision: 2.3529411764705883 %
+F1 score: 4.2105263157894735 %
 
  Processing file: test_04_100_spec.dat
-Recall: 5.0 %
-Precision: 0.4694835680751174 %
-F1 score: 0.8583690987124464 %
+Recall: 15.0 %
+Precision: 1.89873417721519 %
+F1 score: 3.3707865168539324 %
 
  Processing file: test_06_100_spec.dat
-Recall: 25.0 %
-Precision: 2.6178010471204187 %
-F1 score: 4.739336492890995 %
+Recall: 20.0 %
+Precision: 3.076923076923077 %
+F1 score: 5.333333333333334 %
 
  Processing file: test_08_100_spec.dat
-Recall: 30.0 %
-Precision: 3.8461538461538463 %
-F1 score: 6.8181818181818175 %
+Recall: 10.0 %
+Precision: 1.7699115044247788 %
+F1 score: 3.007518796992481 %
 
  Processing file: test_10_100_spec.dat
-Recall: 30.0 %
-Precision: 4.166666666666666 %
-F1 score: 7.317073170731707 %
+Recall: 35.0 %
+Precision: 6.086956521739131 %
+F1 score: 10.37037037037037 %
 
  Processing file: test_12_100_spec.dat
-Recall: 55.00000000000001 %
-Precision: 7.857142857142857 %
-F1 score: 13.750000000000002 %
+Recall: 20.0 %
+Precision: 3.1746031746031744 %
+F1 score: 5.47945205479452 %
 
  Processing file: test_14_100_spec.dat
-Recall: 60.0 %
-Precision: 16.901408450704224 %
-F1 score: 26.373626373626376 %
+Recall: 50.0 %
+Precision: 15.873015873015872 %
+F1 score: 24.096385542168676 %
 
  Processing file: test_16_100_spec.dat
-Recall: 85.0 %
-Precision: 58.620689655172406 %
-F1 score: 69.38775510204081 %
+Recall: 50.0 %
+Precision: 43.47826086956522 %
+F1 score: 46.51162790697674 %
 
  Processing file: test_18_100_spec.dat
-Recall: 95.0 %
-Precision: 73.07692307692307 %
-F1 score: 82.6086956521739 %
+Recall: 85.0 %
+Precision: 60.71428571428571 %
+F1 score: 70.83333333333334 %
 
  Processing file: test_20_100_spec.dat
-Recall: 100.0 %
-Precision: 83.33333333333334 %
-F1 score: 90.9090909090909 %
-
- Processing file: test_22_100_spec.dat
-Recall: 80.0 %
-Precision: 69.56521739130434 %
-F1 score: 74.4186046511628 %
-
- Processing file: test_24_100_spec.dat
-Recall: 70.0 %
-Precision: 60.86956521739131 %
-F1 score: 65.11627906976744 %

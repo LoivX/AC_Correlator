@@ -4,15 +4,17 @@ import numpy as np
 import sys
 import os
 
-def plot_correlation(cor_final, z_interval, possible_systems, logN, snr, output_dir):
+def plot_correlation(cor_final, z_interval, possible_systems, synthetic_systems, logN, snr, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+    
+    for system in synthetic_systems:
+        plt.axvline(x=system, color='r', alpha=0.3)
 
     plt.figure(figsize=(20, 12))
     plt.plot(z_interval, cor_final)
-    plt.axhline(np.mean(cor_final), color='r', linestyle='--', alpha=0.5)
+    plt.axhline(np.mean(cor_final), color='blue', linestyle='--', alpha=0.5)
     plt.axhline(np.std(cor_final) * 3 + np.mean(cor_final), color='yellow', linestyle='--', alpha=0.5)
-    plt.axhline(np.std(cor_final) * 2 + np.mean(cor_final), color='#CC7722', linestyle='--', alpha=0.5)
 
     for system in possible_systems:
         plt.axvline(x=system, color='g', linestyle='--', alpha=0.5)
@@ -50,7 +52,6 @@ if __name__ == '__main__':
     ion = 'CIV'
 
     # Other parameters
-    threshold=0.9999
     dz=1e-5
     perc=75
     resol = 45000
@@ -73,9 +74,11 @@ if __name__ == '__main__':
         for i in range(0,25,2):
             spectrum_file = f'test_{i:02d}_{snr}_spec.dat'
             print('\n Processing file:', spectrum_file)
-            cor_final, z_interval, peaks_table = correlator(spectrum_file, resol, wav_start, wav_end, logN +0.1*i, b, btur, ion, threshold, dz, perc)
+            cor_final, z_interval, peaks_table = correlator(spectrum_file, resol, wav_start, wav_end, logN +0.1*i, b, btur, ion, dz, perc)
             RPF1(peaks_table, synthetic_systems, b)
-            plot_correlation(cor_final, z_interval, peaks_table['z'], logN +0.1*i, snr, r'D:\Università\terzo anno\Tesi\Immagini\Cor_plots')
+            plot_correlation(cor_final, z_interval, peaks_table['z'], synthetic_systems, logN +0.1*i, snr, r'D:\Università\terzo anno\Tesi\Immagini\Cor_plots')
+
+            cor_final, z_interval, peaks_table = [], [], []
 
     sys.stdout = original_stdout
     file.close()

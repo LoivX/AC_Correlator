@@ -11,9 +11,19 @@ from tqdm import tqdm
 ##FUNCTIONS##
 
 # Get indices function
-def get_indicies(flux, threshold):
-    indicies = np.where(~(flux > threshold))[0]
+def get_indicies(spec_chunk, flux, threshold, ion, i, z):
+    if i == 0:
+        ion_components = {key: value for key, value in vars.xem_d.items() if ion in key}
+        c1 = float(ion_components[list(ion_components.items())[0][0]].value)
+        c2 = float(ion_components[list(ion_components.items())[1][0]].value)
+        mask = ((spec_chunk['wavelength'] > c1*(1+z)) & (spec_chunk['wavelength'] < c2*(1+z))) | ((spec_chunk['wavelength'] < c1*(1+z)) & (spec_chunk['wavelength'] > c2*(1+z)) & (flux < 1- threshold))
+
+        indicies = np.where(mask)[0]
+    else:
+        indicies = np.where((flux < 1- threshold))[0]
+    
     count = len(indicies)
+        
     return indicies, count
 
 # Function to convert bin to redshift
@@ -30,9 +40,11 @@ def psf_gauss(x, resol):
         psf = psf[np.where(psf > 1e-6)]
         return psf
 
-def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, threshold, dz, perc):
+def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, dz, perc):
     # Load spectrum
     spectrum = Table.read(spectrum_file, format='ascii')
+    threshold = np.std(spectrum['dy'])
+
     spectrum = Table([spectrum['x'], spectrum['y']], names=['wavelength', 'flux'])
         
     # Define models
@@ -62,7 +74,7 @@ def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, thr
             interpolated_flux = interpolate(spec_chunk['wavelength'])
 
             # Identifying the indices of the model that are below the threshold
-            indicies, count = get_indicies(interpolated_flux, threshold)
+            indicies, count = get_indicies(spec_chunk, interpolated_flux, threshold, ion, i, z)
 
             cor = np.correlate(interpolated_flux[indicies], spec_chunk['flux'][indicies], mode='valid') / count
             cor_all[i] = np.append(cor_all[i], cor)
@@ -72,7 +84,8 @@ def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, thr
     p1 = np.percentile(cor_all[1], perc)
     p2 = np.percentile(cor_all[2], perc)
 
-    cor_final = (p0 - cor_all[0]) * (p1 - cor_all[1]) * (p2 - cor_all[2])
+    #cor_final = (p0 - cor_all[0]) * (p1 - cor_all[1]) * (p2 - cor_all[2])
+    cor_final = p0 - cor_all[0]
     z_interval = np.arange(z_start, z_end, dz)
 
     # Finding the peaks
@@ -80,4 +93,4 @@ def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, thr
     peaks_table = Table([bin_to_z(peaks, z_start, dz), properties['peak_heights'], properties['widths'], bin_to_z(properties['left_ips'], z_start, dz), bin_to_z(properties['right_ips'], z_start, dz), properties['width_heights'], properties['prominences']],
                         names=['z', 'height', 'fwhm', 'left_z', 'right_z', 'half_max', 'prominence'])
 
-    return cor_final, z_interval, peaks_table
+    return cor_final, z_interval, peaks_table, models, spectrum
