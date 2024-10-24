@@ -1,26 +1,26 @@
 # %%
 import matplotlib.pyplot as plt
-from correlator_v2 import correlator
+from correlator_v3 import correlator
 import numpy as np
 from scipy.interpolate import interp1d
 
 
 # %%
 def plot_model_vs_data(model, spectrum, z):
-    interval = [(model['wavelength'].min())*(1+z), (model['wavelength'].max())*(1+z)]    
-    mask = (spectrum['wavelength'] > interval[0]) & (spectrum['wavelength'] < interval[1])
+    interval = [(model['x'].min())*(1+z), (model['x'].max())*(1+z)]    
+    mask = (spectrum['x'] > interval[0]) & (spectrum['x'] < interval[1])
 
     # Selecting the data interval covered by the model
     spec_chunk = spectrum[mask]
 
-    # Interpolating the model to the data wavelength
-    interpolate = interp1d(model['wavelength']*(1 + z), model['flux'], kind='linear')
-    interpolated_flux = interpolate(spec_chunk['wavelength'])
+    # Interpolating the model to the data x
+    interpolate = interp1d(model['x']*(1 + z), model['y'], kind='linear')
+    interpolated_flux = interpolate(spec_chunk['x'])
 
     
     plt.figure()
-    plt.plot(spec_chunk['wavelength'], spec_chunk['flux']) 
-    plt.plot(spec_chunk['wavelength'], interpolated_flux)
+    plt.plot(spec_chunk['x'], spec_chunk['y']) 
+    plt.plot(spec_chunk['x'], interpolated_flux)
     plt.savefig(rf'D:\Università\terzo anno\Tesi\Immagini\model over data\model_vs_data_{z}.png')
 
 #%%
@@ -42,17 +42,17 @@ def plot_correlation(cor_final, z_interval, possible_systems, synthetic_systems)
     plt.legend(['Correlation', 'Mean', r'3$\sigma$', r'2$\sigma$', 'possible Systems', 'synthetic Systems'])
     plt.show()
 
-def RPF1(peaks_table, synthetic_systems, b):
-    tp = sum(1 for system in peaks_table['z'] if any(abs(system - syn)/(1+syn) < 1.665*b/3e5 for syn in synthetic_systems))
+def RPF1(peaks, synthetic_systems, b):
+    tp = sum(1 for system in peaks if any(abs(system - syn)/(1+syn) < 1.665*b/3e5 for syn in synthetic_systems))
     
-    fp = len(peaks_table['z']) - tp
+    fp = len(peaks) - tp
     p = len(synthetic_systems)
 
     recall = tp / p * 100
     precision = tp / (tp+fp) * 100
     f1 = 2 * tp / (tp + fp + p) * 100
 
-    not_identified = [system for system in synthetic_systems if not any(abs(system - syn)/(1+syn) < 1.665*b/3e5 for syn in peaks_table['z'])]
+    not_identified = [system for system in synthetic_systems if not any(abs(system - syn)/(1+syn) < 1.665*b/3e5 for syn in peaks)]
 
     print('Recall:', recall, '%')
     print('Precision:', precision, '%')
@@ -62,38 +62,30 @@ def RPF1(peaks_table, synthetic_systems, b):
 # %%
 if __name__ == '__main__':
 
-    spectrum_file = r'D:\Università\terzo anno\Tesi\AC_Correlator\test_mos2_spec.dat'
+    spectrum_file = r'D:\Università\terzo anno\Tesi\AC_Correlator\test_24_200_spec.dat'
     
     ## PARAMETERS ##
     # Model parameters
-    wav_start = [154.8, 154.8, 155.06]
-    wav_end = [155.1, 154.85, 155.1]
-    z = 0
-    logN = 12.4
+    logN = 12.5
     b = 5
-    btur = 0
     ion = 'CIV'
 
     # Other parameters
-    dz= 1e-5
-    perc= 75
+    dz= 0.8e-5
     resol = 45000
-    
 
-
-    cor_final, z_interval, peaks_table, models, spectrum = correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, dz, perc)
-
-
+    cor_final, z_interval, peaks = correlator(spectrum_file, resol, logN, b, ion, dz)
 
     # Completness calculation
-    synthetic_systems = [2.66462998, 2.55587099, 2.96921979, 2.76635491, 2.7774652,  2.70447149, 2.96940649, 2.73301883, 2.8231059,  2.70423362, 2.61945458, 2.9466871, 2.95230607, 2.71348916, 2.98043051, 2.63200771, 2.63711607, 2.69366724, 2.86461042, 2.88744127]
+    synthetic_systems = [2.51097581, 2.53316622, 2.53765678, 2.55659701, 2.5738651, 2.58102128, 2.60045534, 2.64506485, 2.69327996, 2.72935909, 2.75362322, 2.76679574, 2.78899205, 2.813958, 2.84173642, 2.84820465, 2.95841746, 2.96369678, 2.97805738, 2.99442473]
+
 # %%
-    RPF1(peaks_table, synthetic_systems, b)
+    RPF1(peaks, synthetic_systems, b)
 # %%
-   # for sys in synthetic_systems:
-   #     plot_model_vs_data(models[0], spectrum, sys)
+    #for sys in synthetic_systems:
+    #    plot_model_vs_data(models[0], spectrum, sys)
 # %%
-    plot_correlation(cor_final, z_interval, peaks_table['z'], synthetic_systems)
+    plot_correlation(cor_final, z_interval, peaks, synthetic_systems)
 
 
 

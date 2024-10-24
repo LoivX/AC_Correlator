@@ -1,65 +1,78 @@
 
  Processing file: test_00_200_spec.dat
-Recall: 15.0 %
-Precision: 2.2556390977443606 %
-F1 score: 3.9215686274509802 %
+Recall: 5.0 %
+Precision: 0.8333333333333334 %
+F1 score: 1.4285714285714286 %
+Not identified: [2.51097581, 2.53316622, 2.53765678, 2.55659701, 2.5738651, 2.60045534, 2.64506485, 2.69327996, 2.72935909, 2.75362322, 2.76679574, 2.78899205, 2.813958, 2.84173642, 2.84820465, 2.95841746, 2.96369678, 2.97805738, 2.99442473]
 
  Processing file: test_02_200_spec.dat
 Recall: 5.0 %
-Precision: 0.8620689655172413 %
-F1 score: 1.4705882352941175 %
+Precision: 0.847457627118644 %
+F1 score: 1.4492753623188406 %
+Not identified: [2.51097581, 2.53316622, 2.53765678, 2.55659701, 2.5738651, 2.58102128, 2.60045534, 2.64506485, 2.69327996, 2.75362322, 2.76679574, 2.78899205, 2.813958, 2.84173642, 2.84820465, 2.95841746, 2.96369678, 2.97805738, 2.99442473]
 
  Processing file: test_04_200_spec.dat
-Recall: 10.0 %
-Precision: 1.5037593984962405 %
-F1 score: 2.6143790849673203 %
+Recall: 15.0 %
+Precision: 3.0 %
+F1 score: 5.0 %
+Not identified: [2.51097581, 2.53316622, 2.53765678, 2.55659701, 2.58102128, 2.60045534, 2.69327996, 2.72935909, 2.75362322, 2.76679574, 2.813958, 2.84173642, 2.84820465, 2.95841746, 2.96369678, 2.97805738, 2.99442473]
 
  Processing file: test_06_200_spec.dat
-Recall: 20.0 %
-Precision: 2.7586206896551726 %
-F1 score: 4.848484848484849 %
+Recall: 45.0 %
+Precision: 8.035714285714286 %
+F1 score: 13.636363636363635 %
+Not identified: [2.53316622, 2.53765678, 2.58102128, 2.60045534, 2.69327996, 2.76679574, 2.78899205, 2.813958, 2.84173642, 2.84820465, 2.96369678]
 
  Processing file: test_08_200_spec.dat
-Recall: 50.0 %
-Precision: 8.130081300813007 %
-F1 score: 13.986013986013987 %
+Recall: 55.00000000000001 %
+Precision: 11.224489795918368 %
+F1 score: 18.64406779661017 %
+Not identified: [2.51097581, 2.55659701, 2.58102128, 2.75362322, 2.76679574, 2.78899205, 2.95841746, 2.96369678, 2.97805738]
 
  Processing file: test_10_200_spec.dat
-Recall: 45.0 %
-Precision: 10.465116279069768 %
-F1 score: 16.9811320754717 %
+Recall: 90.0 %
+Precision: 26.865671641791046 %
+F1 score: 41.37931034482759 %
+Not identified: [2.53316622, 2.5738651]
 
  Processing file: test_12_200_spec.dat
-Recall: 55.00000000000001 %
-Precision: 23.404255319148938 %
-F1 score: 32.83582089552239 %
+Recall: 95.0 %
+Precision: 67.85714285714286 %
+F1 score: 79.16666666666666 %
+Not identified: [2.96369678]
 
  Processing file: test_14_200_spec.dat
-Recall: 75.0 %
-Precision: 57.692307692307686 %
-F1 score: 65.21739130434783 %
+Recall: 100.0 %
+Precision: 95.23809523809523 %
+F1 score: 97.5609756097561 %
+Not identified: []
 
  Processing file: test_16_200_spec.dat
-Recall: 75.0 %
-Precision: 60.0 %
-F1 score: 66.66666666666666 %
+Recall: 100.0 %
+Precision: 100.0 %
+F1 score: 100.0 %
+Not identified: []
 
  Processing file: test_18_200_spec.dat
-Recall: 70.0 %
-Precision: 60.86956521739131 %
-F1 score: 65.11627906976744 %
+Recall: 100.0 %
+Precision: 100.0 %
+F1 score: 100.0 %
+Not identified: []
 
  Processing file: test_20_200_spec.dat
-Recall: 80.0 %
-Precision: 69.56521739130434 %
-F1 score: 74.4186046511628 %
+Recall: 100.0 %
+Precision: 100.0 %
+F1 score: 100.0 %
+Not identified: []
 
  Processing file: test_22_200_spec.dat
-Recall: 80.0 %
-Precision: 69.56521739130434 %
-F1 score: 74.4186046511628 %
+Recall: 100.0 %
+Precision: 100.0 %
+F1 score: 100.0 %
+Not identified: []
 
  Processing file: test_24_200_spec.dat
-Recall: 60.0 %
-Precision: 52.17391304347826 %
-F1 score: 55.81395348837209 %
+Recall: 100.0 %
+Precision: 100.0 %
+F1 score: 100.0 %
+Not identified: []

@@ -84,8 +84,7 @@ def correlator(spectrum_file, resol, wav_start, wav_end, logN, b, btur, ion, dz,
     p1 = np.percentile(cor_all[1], perc)
     p2 = np.percentile(cor_all[2], perc)
 
-    #cor_final = (p0 - cor_all[0]) * (p1 - cor_all[1]) * (p2 - cor_all[2])
-    cor_final = p0 - cor_all[0]
+    cor_final = (p0 - cor_all[0]) * (p1 - cor_all[1]) * (p2 - cor_all[2])
     z_interval = np.arange(z_start, z_end, dz)
 
     # Finding the peaks
