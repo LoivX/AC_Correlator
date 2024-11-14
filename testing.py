@@ -38,10 +38,10 @@ def RPF1(peaks, synthetic_systems, b):
 
     not_identified = [system for system in synthetic_systems if not any(abs(system - syn)/(1+syn) < 1.665*b/3e5 for syn in peaks)]
 
-    print('Recall:', recall, '%')
-    print('Precision:', precision, '%')
-    print('F1 score:', f1, '%')
-    print('Not identified:', not_identified)
+    print(f'Recall: {recall:.2f} %')
+    print(f'Precision: {precision:.2f} %')
+    print(f'F1 Score: {f1:.2f} %')
+    #print('Not identified:', not_identified)
 
     return recall, precision, f1
 
@@ -84,9 +84,9 @@ if __name__ == '__main__':
             f1 = np.zeros(10)
 
             threshold = correlator(rf'plain_spec_{snr}_spec.dat', resol, logN +0.1*i, b, ion, dz, 1)
-            print(f'logN = {logN + 0.1*i},  treshold = {threshold}')
+            print(f'logN = {logN + 0.1*i},  treshold = {threshold:.4f}')
 
-            for j in range(1,10,1):
+            for j in range(1,11,1):
                 spectrum_file = rf'spectra\test_{i:02d}_{snr}_{j}_spec.dat'
                 print('Processing file:', spectrum_file)
                 cor_final, z_interval, peaks = correlator(spectrum_file, resol, logN +0.1*i, b, ion, dz, threshold)
@@ -94,11 +94,11 @@ if __name__ == '__main__':
                 plot_correlation(cor_final, z_interval, peaks, synthetic_systems[j-1], logN +0.1*i, threshold, snr, j, rf'D:\Università\terzo anno\Tesi\Immagini\v3_final\{snr}\{i:02d}')
                 print('\n')
 
-            print('\n \n MEANS')
-            print('Recall: ', np.mean(recall))  
-            print('Precision: ', np.mean(precision))  
-            print('F1 score: ', np.mean(f1))  
-            print(' ______________________________________________________________________________ \n \n \n')
+            print(f'RESULTS for logN = {logN+0.1*i}')
+            print('\n \nMEANS \t \t STANDARD DEVIATION')
+            print(f'Recall: {np.mean(recall):.2f} % \t \t {np.std(recall):.2f}')
+            print(f'F1 score: {np.mean(f1):.2f} % \t \t {np.std(f1):.2f}')    
+            print('_______________________________________________________________________________________________________ \n \n \n')
 
             
 
