@@ -34,8 +34,7 @@ def get_dlambda(ion):
 
 # Function to find the peaks studying the delta_z between the peaks
 def find_systems(peaks_table, ion = 'CIV', z_tolerance = 0.1e-3, height_threshold = 3):
-    possible_systems = []
-
+    
     for peak in peaks_table[peaks_table['height'] > np.mean(cor_final) + np.std(cor_final)*height_threshold]:
         # Defining the theoretical redshifts of the sx and dx peaks
         delta_lambda = get_dlambda(ion)
@@ -54,11 +53,14 @@ def find_systems(peaks_table, ion = 'CIV', z_tolerance = 0.1e-3, height_threshol
         sx_peak = peaks_table[sx_mask & height_mask & not_peak_z_mask]
         dx_peak = peaks_table[dx_mask & height_mask & not_peak_z_mask]
 
-        # Saving the possible systems
-        if((len(sx_peak) >= 1) & (len(dx_peak) >= 1)):
-            possible_systems.append(round(peak['z'], 4))
-
-    return possible_systems
+        # Removing the secondary peaks
+        if((len(sx_peak) == 1) & (len(dx_peak) == 1)):
+            for sx in sx_peak:
+                peaks_table = peaks_table[peaks_table['z'] != sx['z']]
+            for dx in dx_peak:
+                peaks_table = peaks_table[peaks_table['z'] != dx['z']]
+                
+    return peaks_table['z']
 
 
 
@@ -66,7 +68,7 @@ def find_systems(peaks_table, ion = 'CIV', z_tolerance = 0.1e-3, height_threshol
 
 ##MAIN##
 
-spectrum = Table.read('testCIV_7_spec.dat', format='ascii')
+spectrum = Table.read('testCIV_8_spec.dat', format='ascii')
 spectrum = Table([spectrum['x'], spectrum['y']], names=['wavelength', 'flux'])
 
 wav_start = [154.8, 154.8, 155.06]
@@ -138,39 +140,30 @@ height_threshold = 2.5
 z_tolerance = 0.2e-3
 ion = 'CIV'
 
-possible_systems = find_systems(peaks_table, ion, z_tolerance , height_threshold)
-print(possible_systems, len(possible_systems))
+possible_systems = []
+f1tot = []
 
+for ht in np.arange(2, 4, 0.05):
+    for zt in np.arange(10e-5, 10e-4, 0.5e-5):
+        possible_systems = find_systems(peaks_table, ion, zt, ht)
 
-synthetic_systems = [2.57352431, 2.66422603, 2.51803598, 2.22357274, 2.58163493, 2.21013991, 2.30970016, 2.82904971, 2.60683895, 2.95009428, 2.88590944, 2.27320993, 2.20884315, 3.08239514, 2.73699688, 2.30842111, 2.22430456, 2.68757115, 2.71786475, 2.98868828]
+        synthetic_systems = [2.55646069, 2.58495365, 2.59680712, 2.60450324, 2.60796068, 2.61049208, 2.64539575, 2.64623804, 2.65191481, 2.66880955, 2.70345038, 2.71184958, 2.71576258, 2.7583452, 2.78713784, 2.81702964, 2.81859274, 2.88002692, 2.89315974, 2.93926941]
 
+        tp = sum(1 for system in possible_systems if any(abs(system - syn) < 1.665*b/3e5 for syn in synthetic_systems))
 
-tp = sum(1 for system in possible_systems if any(abs(system - syn) < 1.665*b/3e5 for syn in synthetic_systems))
+        fp = len(possible_systems) - tp
+        p = len(synthetic_systems)
 
-fp = len(possible_systems) - tp
-p = len(synthetic_systems)
+        recall = tp / p * 100
+        precision = tp / (tp+fp) * 100
+        f1 = 2 * tp / (tp + fp + p) * 100
 
-recall = tp / p * 100
-precision = tp / (tp+fp) * 100
-f1 = 2 * tp / (tp + fp + p) * 100
+        #print('Recall:', recall, '%')
+        #print('Precision:', precision, '%')
+        print('\n parameters:', ht, zt)
+        print('F1 score:', f1, '%')
 
-print('Recall:', recall, '%')
-print('Precision:', precision, '%')
-print('F1 score:', f1, '%')
+        f1tot.append(f1)
 
-
-#PLOTS
-plt.figure(figsize = (20, 12))
-plt.plot(z_interval, cor_final)
-plt.axhline(np.mean(cor_final), color='r', linestyle='--', alpha=0.5)
-plt.axhline(np.std(cor_final)*3 + np.mean(cor_final), color='yellow', linestyle='--', alpha=0.5)
-plt.axhline(np.std(cor_final)*2 + np.mean(cor_final), color='#CC7722', linestyle='--', alpha=0.5)
-
-for system in possible_systems:
-    plt.axvline(x=system, color='g', linestyle='--', alpha=0.5)
-
-plt.xlabel('Redshift (z)')
-plt.ylabel('Correlation')
-plt.title('Correlation vs Redshift (fs)')
-plt.legend(['Correlation', 'Mean', r'3$\sigma$', r'2$\sigma$', 'possible Systems'])
-plt.show()
+print('Max F1:', max(f1tot))
+print('Parameters:', np.arange(2, 4, 0.05)[f1tot.index(max(f1tot))], np.arange(10e-5, 10e-4, 0.5e-5)[f1tot.index(max(f1tot))])
