@@ -21,10 +21,11 @@ def psf_gauss(x, resol):
         return psf
 
 # Main function
-def correlator(spectrum_file, resol, logN, b, ion, dz):
+def correlator(spectrum_file, resol, logN, b, ion, dz, threshold):
     # Load spectrum
     spectrum = Table.read(spectrum_file, format='ascii')['x' , 'y']
-    
+    #spectrum.rename_column('deabs', 'y')
+
     # Define the region of interest
     ion_components = {key: value for key, value in vars.xem_d.items() if ion in key}
     c1, c2 = (float(ion_components[key].value) for key in list(ion_components)[:2])
@@ -34,6 +35,7 @@ def correlator(spectrum_file, resol, logN, b, ion, dz):
     y = convolve_simple(lines_voigt(x, 0, logN, b, 0, ion), psf_gauss(x, resol))
     models = [Table([x, y], names=['x', 'y'])]
 
+    # defining partial models
     for c in [c1, c2]:
         x = np.linspace(c - 4*1.665*b*c/3e5, c + 4*1.665*b*c/3e5, 1000)
         y = convolve_simple(lines_voigt(x, 0, logN, b, 0, ion), psf_gauss(x, resol))
@@ -60,7 +62,13 @@ def correlator(spectrum_file, resol, logN, b, ion, dz):
     # Removing secondary peaks
     cor_final = (cor_all[0]) * (cor_all[1]) * (cor_all[2])
 
-    # Identifing peaks
-    peaks , _ = sps.find_peaks(cor_final, height = np.mean(cor_final) + np.std(cor_final) * 2.5, prominence=0, width=0.01, distance=5e-4 / dz)
-
-    return cor_final, np.arange(z_start, z_end, dz), z_start + peaks * dz#, models, spectrum
+    if(threshold == 1):
+            return np.std(cor_final)*3 + np.mean(cor_final)
+        
+    else:
+        peaks , _ = sps.find_peaks(cor_final, height = threshold, prominence=0, width=0.01, distance=5e-4 / dz)
+        if(len(peaks) == 0):
+            print("Could not find any peaks :(")
+            return cor_final, np.arange(z_start, z_end, dz), z_start
+        else:
+            return cor_final, np.arange(z_start, z_end, dz), z_start + peaks * dz
