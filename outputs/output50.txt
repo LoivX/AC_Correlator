@@ -1,2 +1,0 @@
-logN = 11.4,  treshold = 0.0000
-Processing file: spectra\test_14_50_1_spec.dat
