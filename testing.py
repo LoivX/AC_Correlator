@@ -76,27 +76,29 @@ if __name__ == '__main__':
 
 
     for snr in [50, 100, 200]:
-        file = open(f"output{snr}.txt", "w")
+        file = open(f"output{snr}_3s2.txt", "w")
         sys.stdout = file  # Reindirizza stdout al file
-        for i in range(14,4,-1):
+        for i in range(15,14,-1):
             recall = np.zeros(10)
             precision = np.zeros(10)
             f1 = np.zeros(10)
 
             threshold = correlator(rf'plain_spec_{snr}_spec.dat', resol, logN +0.1*i, b, ion, dz, 1)
-            print(f'logN = {logN + 0.1*i},  treshold = {threshold:.4f}')
+            print(f'logN = {logN + 0.1*i},  treshold = {threshold}')
 
             for j in range(1,11,1):
                 spectrum_file = rf'spectra\test_{i:02d}_{snr}_{j}_spec.dat'
                 print('Processing file:', spectrum_file)
                 cor_final, z_interval, peaks = correlator(spectrum_file, resol, logN +0.1*i, b, ion, dz, threshold)
-                recall[j-1], precision[j-1], f1[j-1] = RPF1(peaks, synthetic_systems[j-1], b)
-                plot_correlation(cor_final, z_interval, peaks, synthetic_systems[j-1], logN +0.1*i, threshold, snr, j, rf'D:\Università\terzo anno\Tesi\Immagini\v3_final\{snr}\{i:02d}')
+                if (len(peaks) != 0):
+                    recall[j-1], precision[j-1], f1[j-1] = RPF1(peaks, synthetic_systems[j-1], b)
+                plot_correlation(cor_final, z_interval, peaks, synthetic_systems[j-1], logN +0.1*i, threshold, snr, j, rf'C:\Users\simon\Documents\Tesi\Immagini\v3_final3s\{snr}\{i:02d}')
                 print('\n')
 
             print(f'RESULTS for logN = {logN+0.1*i}')
-            print('\n \nMEANS \t \t STANDARD DEVIATION')
+            print('\n \nMEANS \t \t \t \t \t STANDARD DEVIATION')
             print(f'Recall: {np.mean(recall):.2f} % \t \t {np.std(recall):.2f}')
+            print(f'Precision: {np.mean(precision):.2f} % \t \t {np.std(precision):.2f}')
             print(f'F1 score: {np.mean(f1):.2f} % \t \t {np.std(f1):.2f}')    
             print('_______________________________________________________________________________________________________ \n \n \n')
 

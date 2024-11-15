@@ -1,0 +1,720 @@
+logN = 11.4,  treshold = 1.3819201241981033e-15
+Processing file: spectra\test_14_100_1_spec.dat
+Recall: 55.00 %
+Precision: 64.71 %
+F1 Score: 59.46 %
+
+
+Processing file: spectra\test_14_100_2_spec.dat
+Recall: 45.00 %
+Precision: 69.23 %
+F1 Score: 54.55 %
+
+
+Processing file: spectra\test_14_100_3_spec.dat
+Recall: 55.00 %
+Precision: 57.89 %
+F1 Score: 56.41 %
+
+
+Processing file: spectra\test_14_100_4_spec.dat
+Recall: 45.00 %
+Precision: 75.00 %
+F1 Score: 56.25 %
+
+
+Processing file: spectra\test_14_100_5_spec.dat
+Recall: 65.00 %
+Precision: 68.42 %
+F1 Score: 66.67 %
+
+
+Processing file: spectra\test_14_100_6_spec.dat
+Recall: 50.00 %
+Precision: 58.82 %
+F1 Score: 54.05 %
+
+
+Processing file: spectra\test_14_100_7_spec.dat
+Recall: 65.00 %
+Precision: 65.00 %
+F1 Score: 65.00 %
+
+
+Processing file: spectra\test_14_100_8_spec.dat
+Recall: 60.00 %
+Precision: 50.00 %
+F1 Score: 54.55 %
+
+
+Processing file: spectra\test_14_100_9_spec.dat
+Recall: 55.00 %
+Precision: 61.11 %
+F1 Score: 57.89 %
+
+
+Processing file: spectra\test_14_100_10_spec.dat
+Recall: 50.00 %
+Precision: 66.67 %
+F1 Score: 57.14 %
+
+
+RESULTS for logN = 11.4
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 54.50 % 	 	 6.87
+Precision: 63.69 % 	 	 6.66
+F1 score: 58.20 % 	 	 4.14
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 11.3,  treshold = 6.955231920263065e-16
+Processing file: spectra\test_13_100_1_spec.dat
+Recall: 25.00 %
+Precision: 41.67 %
+F1 Score: 31.25 %
+
+
+Processing file: spectra\test_13_100_2_spec.dat
+Recall: 30.00 %
+Precision: 46.15 %
+F1 Score: 36.36 %
+
+
+Processing file: spectra\test_13_100_3_spec.dat
+Recall: 15.00 %
+Precision: 33.33 %
+F1 Score: 20.69 %
+
+
+Processing file: spectra\test_13_100_4_spec.dat
+Recall: 25.00 %
+Precision: 45.45 %
+F1 Score: 32.26 %
+
+
+Processing file: spectra\test_13_100_5_spec.dat
+Recall: 35.00 %
+Precision: 58.33 %
+F1 Score: 43.75 %
+
+
+Processing file: spectra\test_13_100_6_spec.dat
+Recall: 35.00 %
+Precision: 70.00 %
+F1 Score: 46.67 %
+
+
+Processing file: spectra\test_13_100_7_spec.dat
+Recall: 40.00 %
+Precision: 53.33 %
+F1 Score: 45.71 %
+
+
+Processing file: spectra\test_13_100_8_spec.dat
+Recall: 35.00 %
+Precision: 58.33 %
+F1 Score: 43.75 %
+
+
+Processing file: spectra\test_13_100_9_spec.dat
+Recall: 40.00 %
+Precision: 44.44 %
+F1 Score: 42.11 %
+
+
+Processing file: spectra\test_13_100_10_spec.dat
+Recall: 45.00 %
+Precision: 81.82 %
+F1 Score: 58.06 %
+
+
+RESULTS for logN = 11.3
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 32.50 % 	 	 8.44
+Precision: 53.29 % 	 	 13.67
+F1 score: 40.06 % 	 	 9.79
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 11.2,  treshold = 3.4975603031950337e-16
+Processing file: spectra\test_12_100_1_spec.dat
+Recall: 25.00 %
+Precision: 41.67 %
+F1 Score: 31.25 %
+
+
+Processing file: spectra\test_12_100_2_spec.dat
+Recall: 20.00 %
+Precision: 40.00 %
+F1 Score: 26.67 %
+
+
+Processing file: spectra\test_12_100_3_spec.dat
+Recall: 10.00 %
+Precision: 33.33 %
+F1 Score: 15.38 %
+
+
+Processing file: spectra\test_12_100_4_spec.dat
+Recall: 20.00 %
+Precision: 57.14 %
+F1 Score: 29.63 %
+
+
+Processing file: spectra\test_12_100_5_spec.dat
+Recall: 30.00 %
+Precision: 54.55 %
+F1 Score: 38.71 %
+
+
+Processing file: spectra\test_12_100_6_spec.dat
+Recall: 10.00 %
+Precision: 50.00 %
+F1 Score: 16.67 %
+
+
+Processing file: spectra\test_12_100_7_spec.dat
+Recall: 20.00 %
+Precision: 44.44 %
+F1 Score: 27.59 %
+
+
+Processing file: spectra\test_12_100_8_spec.dat
+Recall: 15.00 %
+Precision: 30.00 %
+F1 Score: 20.00 %
+
+
+Processing file: spectra\test_12_100_9_spec.dat
+Recall: 25.00 %
+Precision: 62.50 %
+F1 Score: 35.71 %
+
+
+Processing file: spectra\test_12_100_10_spec.dat
+Recall: 30.00 %
+Precision: 60.00 %
+F1 Score: 40.00 %
+
+
+RESULTS for logN = 11.2
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 20.50 % 	 	 6.87
+Precision: 47.36 % 	 	 10.66
+F1 score: 28.16 % 	 	 8.27
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 11.1,  treshold = 1.757601810062998e-16
+Processing file: spectra\test_11_100_1_spec.dat
+Recall: 5.00 %
+Precision: 20.00 %
+F1 Score: 8.00 %
+
+
+Processing file: spectra\test_11_100_2_spec.dat
+Recall: 5.00 %
+Precision: 16.67 %
+F1 Score: 7.69 %
+
+
+Processing file: spectra\test_11_100_3_spec.dat
+Recall: 10.00 %
+Precision: 25.00 %
+F1 Score: 14.29 %
+
+
+Processing file: spectra\test_11_100_4_spec.dat
+Recall: 15.00 %
+Precision: 25.00 %
+F1 Score: 18.75 %
+
+
+Processing file: spectra\test_11_100_5_spec.dat
+Recall: 5.00 %
+Precision: 16.67 %
+F1 Score: 7.69 %
+
+
+Processing file: spectra\test_11_100_6_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_11_100_7_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_11_100_8_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_11_100_9_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_11_100_10_spec.dat
+Recall: 10.00 %
+Precision: 22.22 %
+F1 Score: 13.79 %
+
+
+RESULTS for logN = 11.1
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 5.00 % 	 	 5.00
+Precision: 12.56 % 	 	 10.60
+F1 score: 7.02 % 	 	 6.60
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 11.0,  treshold = 8.827517191216662e-17
+Processing file: spectra\test_10_100_1_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_10_100_2_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_10_100_3_spec.dat
+Recall: 10.00 %
+Precision: 40.00 %
+F1 Score: 16.00 %
+
+
+Processing file: spectra\test_10_100_4_spec.dat
+Recall: 5.00 %
+Precision: 25.00 %
+F1 Score: 8.33 %
+
+
+Processing file: spectra\test_10_100_5_spec.dat
+Recall: 5.00 %
+Precision: 16.67 %
+F1 Score: 7.69 %
+
+
+Processing file: spectra\test_10_100_6_spec.dat
+Recall: 5.00 %
+Precision: 20.00 %
+F1 Score: 8.00 %
+
+
+Processing file: spectra\test_10_100_7_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_10_100_8_spec.dat
+Recall: 10.00 %
+Precision: 25.00 %
+F1 Score: 14.29 %
+
+
+Processing file: spectra\test_10_100_9_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_10_100_10_spec.dat
+Recall: 5.00 %
+Precision: 20.00 %
+F1 Score: 8.00 %
+
+
+RESULTS for logN = 11.0
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 4.00 % 	 	 3.74
+Precision: 14.67 % 	 	 13.33
+F1 score: 6.23 % 	 	 5.73
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 10.9,  treshold = 4.4316768801359875e-17
+Processing file: spectra\test_09_100_1_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_09_100_2_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_09_100_3_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_09_100_4_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_09_100_5_spec.dat
+Recall: 5.00 %
+Precision: 14.29 %
+F1 Score: 7.41 %
+
+
+Processing file: spectra\test_09_100_6_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_09_100_7_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_09_100_8_spec.dat
+Recall: 10.00 %
+Precision: 33.33 %
+F1 Score: 15.38 %
+
+
+Processing file: spectra\test_09_100_9_spec.dat
+Recall: 5.00 %
+Precision: 16.67 %
+F1 Score: 7.69 %
+
+
+Processing file: spectra\test_09_100_10_spec.dat
+Recall: 5.00 %
+Precision: 25.00 %
+F1 Score: 8.33 %
+
+
+RESULTS for logN = 10.9
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 2.50 % 	 	 3.35
+Precision: 8.93 % 	 	 11.92
+F1 score: 3.88 % 	 	 5.19
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 10.8,  treshold = 2.2240662813703123e-17
+Processing file: spectra\test_08_100_1_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_2_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_3_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_4_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_5_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_6_spec.dat
+Recall: 5.00 %
+Precision: 20.00 %
+F1 Score: 8.00 %
+
+
+Processing file: spectra\test_08_100_7_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_8_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_9_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_08_100_10_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+RESULTS for logN = 10.8
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 0.50 % 	 	 1.50
+Precision: 2.00 % 	 	 6.00
+F1 score: 0.80 % 	 	 2.40
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 10.7,  treshold = 1.1158562534888182e-17
+Processing file: spectra\test_07_100_1_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_2_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_3_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_4_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_5_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_6_spec.dat
+Recall: 5.00 %
+Precision: 11.11 %
+F1 Score: 6.90 %
+
+
+Processing file: spectra\test_07_100_7_spec.dat
+Recall: 5.00 %
+Precision: 33.33 %
+F1 Score: 8.70 %
+
+
+Processing file: spectra\test_07_100_8_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_9_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_07_100_10_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+RESULTS for logN = 10.7
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 1.00 % 	 	 2.00
+Precision: 4.44 % 	 	 10.18
+F1 score: 1.56 % 	 	 3.14
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 10.6,  treshold = 5.5972425269720085e-18
+Processing file: spectra\test_06_100_1_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_2_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_3_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_4_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_5_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_6_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_7_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_06_100_8_spec.dat
+Recall: 5.00 %
+Precision: 12.50 %
+F1 Score: 7.14 %
+
+
+Processing file: spectra\test_06_100_9_spec.dat
+Recall: 5.00 %
+Precision: 16.67 %
+F1 Score: 7.69 %
+
+
+Processing file: spectra\test_06_100_10_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+RESULTS for logN = 10.6
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 1.00 % 	 	 2.00
+Precision: 2.92 % 	 	 5.91
+F1 score: 1.48 % 	 	 2.97
+_______________________________________________________________________________________________________ 
+ 
+ 
+
+logN = 10.5,  treshold = 2.8071446354213354e-18
+Processing file: spectra\test_05_100_1_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_2_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_3_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_4_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_5_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_6_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_7_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_8_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_9_spec.dat
+Recall: 0.00 %
+Precision: 0.00 %
+F1 Score: 0.00 %
+
+
+Processing file: spectra\test_05_100_10_spec.dat
+Recall: 5.00 %
+Precision: 20.00 %
+F1 Score: 8.00 %
+
+
+RESULTS for logN = 10.5
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 0.50 % 	 	 1.50
+Precision: 2.00 % 	 	 6.00
+F1 score: 0.80 % 	 	 2.40
+_______________________________________________________________________________________________________ 
+ 
+ 
+

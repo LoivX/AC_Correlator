@@ -1,0 +1,73 @@
+logN = 11.5,  treshold = 1.447928188573937e-16
+Processing file: spectra\test_15_200_1_spec.dat
+Recall: 100.00 %
+Precision: 23.53 %
+F1 Score: 38.10 %
+
+
+Processing file: spectra\test_15_200_2_spec.dat
+Recall: 100.00 %
+Precision: 25.00 %
+F1 Score: 40.00 %
+
+
+Processing file: spectra\test_15_200_3_spec.dat
+Recall: 100.00 %
+Precision: 20.41 %
+F1 Score: 33.90 %
+
+
+Processing file: spectra\test_15_200_4_spec.dat
+Recall: 100.00 %
+Precision: 22.22 %
+F1 Score: 36.36 %
+
+
+Processing file: spectra\test_15_200_5_spec.dat
+Recall: 100.00 %
+Precision: 27.03 %
+F1 Score: 42.55 %
+
+
+Processing file: spectra\test_15_200_6_spec.dat
+Recall: 100.00 %
+Precision: 24.10 %
+F1 Score: 38.83 %
+
+
+Processing file: spectra\test_15_200_7_spec.dat
+Recall: 100.00 %
+Precision: 24.10 %
+F1 Score: 38.83 %
+
+
+Processing file: spectra\test_15_200_8_spec.dat
+Recall: 95.00 %
+Precision: 19.00 %
+F1 Score: 31.67 %
+
+
+Processing file: spectra\test_15_200_9_spec.dat
+Recall: 100.00 %
+Precision: 25.64 %
+F1 Score: 40.82 %
+
+
+Processing file: spectra\test_15_200_10_spec.dat
+Recall: 100.00 %
+Precision: 22.73 %
+F1 Score: 37.04 %
+
+
+RESULTS for logN = 11.5
+
+ 
+MEANS 	 	 	 	 	 STANDARD DEVIATION
+Recall: 99.50 % 	 	 1.50
+Precision: 23.37 % 	 	 2.28
+F1 score: 37.81 % 	 	 3.07
+11.5 & 99.50 & 1.50 & 23.37 & 2.28 & 37.81 & 3.07 \
+_______________________________________________________________________________________________________ 
+ 
+ 
+
