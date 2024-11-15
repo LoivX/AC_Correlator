@@ -17,7 +17,7 @@ def plot_correlation(cor_final, z_interval, possible_systems, spectrum_file, thr
 
     plt.xlabel('Wavelength')
     plt.ylabel('Flux')
-    plt.title('Spectrum with possible Systems')
+    plt.title('Deep Spectrum UVES with possible Systems')
 
     
     
@@ -32,19 +32,19 @@ def plot_correlation(cor_final, z_interval, possible_systems, spectrum_file, thr
     plt.xlabel('Redshift (z)')
     plt.ylabel('Correlation')
     plt.title('Correlation vs Redshift')
-    plt.legend(['Correlation', r'5$\sigma$', 'possible Systems', 'synthetic Systems'])
+    plt.legend(['Correlation', r'3$\sigma$', 'Possible Systems'])
     plt.show()
 
 
 # %%
 if __name__ == '__main__':
 
-    plain_spec = r'D:\Università\terzo anno\Tesi\AC_Correlator\plain_spec_200_spec.dat'
-    spectrum_file = r'D:\Università\terzo anno\Tesi\AC_Correlator\J0942UVES_original_CIV_AND_METALS_spec.dat'
+    plain_spec = r'C:\Users\simon\Documents\Tesi\AC_Correlator\plain_spec_200_spec.dat'
+    spectrum_file = r'C:\Users\simon\Documents\Tesi\AC_Correlator\J0942UVES_original_CIV_AND_METALS_spec.dat'
     
     ## PARAMETERS ##
     # Model parameters
-    logN = 11              
+    logN = 10.5              
     b = 5
     ion = 'CIV'
 

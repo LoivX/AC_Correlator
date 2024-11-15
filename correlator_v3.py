@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r"d:\Università\terzo anno\Tesi\astrocook")
+sys.path.append(r"C:\Users\simon\Documents\Tesi\astrocook")
 from astrocook.functions import lines_voigt, convolve_simple
 from astrocook import vars
 from astropy.table import Table
@@ -63,12 +63,11 @@ def correlator(spectrum_file, resol, logN, b, ion, dz, threshold):
     cor_final = (cor_all[0]) * (cor_all[1]) * (cor_all[2])
 
     if(threshold == 1):
-            return np.std(cor_final)*3 + np.mean(cor_final)
+            return np.std(cor_final)*10 + np.mean(cor_final)
         
     else:
         peaks , _ = sps.find_peaks(cor_final, height = threshold, prominence=0, width=0.01, distance=5e-4 / dz)
         if(len(peaks) == 0):
             print("Could not find any peaks :(")
-            return cor_final, np.arange(z_start, z_end, dz), z_start
-        else:
-            return cor_final, np.arange(z_start, z_end, dz), z_start + peaks * dz
+        
+        return cor_final, np.arange(z_start, z_end, dz), z_start + peaks * dz

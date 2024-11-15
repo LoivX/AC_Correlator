@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r"d:\Università\terzo anno\Tesi\astrocook")
+sys.path.append(r"C:\Users\simon\Documents\Tesi\astrocook")
 from astrocook.functions import lines_voigt, convolve_simple
 from astrocook import vars
 from astropy.table import Table
@@ -67,7 +67,7 @@ def deabs_correlator(spectrum_file, resol, logN, b, ion, dz, threshold):
 
     # Identifing peaks
     if(threshold == 1):
-        return np.std(cor_final)*4 + np.mean(cor_final)
+        return np.std(cor_final)*3 + np.mean(cor_final)
     
     else:
         peaks , _ = sps.find_peaks(cor_final, height = threshold, prominence=0, width=0.01, distance=5e-4 / dz)
