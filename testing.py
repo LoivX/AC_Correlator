@@ -75,15 +75,22 @@ if __name__ == '__main__':
     original_stdout = sys.stdout
 
 
-    for snr in [50, 100, 200]:
-        file = open(f"output{snr}_3s2.txt", "w")
+    for snr in [320]:
+        file = open(f"output{snr}_10s.txt", "w")
         sys.stdout = file  # Reindirizza stdout al file
-        for i in range(15,14,-1):
+        rmeans = np.zeros(11)
+        pmeans = np.zeros(11)
+        fmeans = np.zeros(11)
+        rdevs = np.zeros(11)
+        pdevs = np.zeros(11)
+        fdevs = np.zeros(11)
+
+        for i in range(15,4,-1):
             recall = np.zeros(10)
             precision = np.zeros(10)
             f1 = np.zeros(10)
 
-            threshold = correlator(rf'plain_spec_{snr}_spec.dat', resol, logN +0.1*i, b, ion, dz, 1)
+            threshold = correlator(rf'spectra\plain_spec_{snr}_spec.dat', resol, logN +0.1*i, b, ion, dz, 1)
             print(f'logN = {logN + 0.1*i},  treshold = {threshold}')
 
             for j in range(1,11,1):
@@ -92,8 +99,15 @@ if __name__ == '__main__':
                 cor_final, z_interval, peaks = correlator(spectrum_file, resol, logN +0.1*i, b, ion, dz, threshold)
                 if (len(peaks) != 0):
                     recall[j-1], precision[j-1], f1[j-1] = RPF1(peaks, synthetic_systems[j-1], b)
-                plot_correlation(cor_final, z_interval, peaks, synthetic_systems[j-1], logN +0.1*i, threshold, snr, j, rf'C:\Users\simon\Documents\Tesi\Immagini\v3_final3s\{snr}\{i:02d}')
+                plot_correlation(cor_final, z_interval, peaks, synthetic_systems[j-1], logN +0.1*i, threshold, snr, j, rf'C:\Users\simon\Documents\Tesi\Immagini\v3_final10s\{snr}\{i:02d}')
                 print('\n')
+
+            rmeans[i-15] = np.mean(recall)
+            pmeans[i-15] = np.mean(precision)
+            fmeans[i-15] = np.mean(f1)
+            rdevs[i-15] = np.std(recall)
+            pdevs[i-15] = np.std(precision)
+            fdevs[i-15] = np.std(f1)
 
             print(f'RESULTS for logN = {logN+0.1*i}')
             print('\n \nMEANS \t \t \t \t \t STANDARD DEVIATION')
@@ -101,6 +115,11 @@ if __name__ == '__main__':
             print(f'Precision: {np.mean(precision):.2f} % \t \t {np.std(precision):.2f}')
             print(f'F1 score: {np.mean(f1):.2f} % \t \t {np.std(f1):.2f}')    
             print('_______________________________________________________________________________________________________ \n \n \n')
+
+        print('_______________________________________________________________________________________________________ \n \n \n')
+        print('FINAL RESULTS')
+        for i in range(5,16,1):
+            print(f'{logN + 0.1*i} & {rmeans[i-15]:.2f} & {rdevs[i-15]:.2f} & {pmeans[i-15]:.2f} & {pdevs[i-15]:.2f} & {fmeans[i-15]:.2f} & {fdevs[i-15]:.2f} \\\\')
 
             
 

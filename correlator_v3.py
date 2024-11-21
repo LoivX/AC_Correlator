@@ -69,5 +69,7 @@ def correlator(spectrum_file, resol, logN, b, ion, dz, threshold):
         peaks , _ = sps.find_peaks(cor_final, height = threshold, prominence=0, width=0.01, distance=5e-4 / dz)
         if(len(peaks) == 0):
             print("Could not find any peaks :(")
+
+        peaks = peaks[cor_final[peaks] < 1e-19]
         
         return cor_final, np.arange(z_start, z_end, dz), z_start + peaks * dz

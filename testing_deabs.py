@@ -39,8 +39,8 @@ def plot_correlation(cor_final, z_interval, possible_systems, spectrum_file, thr
 # %%
 if __name__ == '__main__':
 
-    plain_spec = r'C:\Users\simon\Documents\Tesi\AC_Correlator\plain_spec_200_spec.dat'
-    spectrum_file = r'C:\Users\simon\Documents\Tesi\AC_Correlator\J0942UVES_original_CIV_AND_METALS_spec.dat'
+    plain_spec = r'C:\Users\simon\Documents\Tesi\AC_Correlator\spectra\plain_spec_320_spec.dat'
+    spectrum_file = r'C:\Users\simon\Documents\Tesi\AC_Correlator\spectra\J0942UVES_original_CIV_AND_METALS_spec.dat'
     
     ## PARAMETERS ##
     # Model parameters
@@ -56,6 +56,7 @@ if __name__ == '__main__':
     print(thrs)
     cor_final, z_interval, peaks = deabs_correlator(spectrum_file, resol, logN, b, ion, dz, thrs)
 
+    print(peaks)
 
 # %%
     plot_correlation(cor_final, z_interval, peaks, spectrum_file, thrs)
